@@ -1,55 +1,56 @@
-local o = vim.o
-local g = vim.g
-local cmd = vim.cmd
-local nvim_set_hl = vim.api.nvim_set_hl
-local tbl_deep_extend = vim.tbl_deep_extend
+---@class Integrations
+---@field blink_cmp? boolean
+---@field gitsigns? boolean
+---@field telescope? boolean
+---@field supermaven? boolean
 
 ---@class OsmiumConfig
 ---@field italic_comment? boolean
 ---@field transparent_bg? boolean
 ---@field show_end_of_buffer? boolean
----@field lualine_bg_color? string?
 ---@field colors? Palette
 ---@field theme? string?
+---@field integrations? Integrations
 ---@field overrides? HighlightGroups | fun(colors: Palette): HighlightGroups
 local DEFAULT_CONFIG = {
-   italic_comment = false,
-   transparent_bg = false,
-   show_end_of_buffer = false,
-   lualine_bg_color = nil,
-   colors = require("osmium.palette"),
-   overrides = {},
-   theme = 'osmium'
+    italic_comment = false,
+    transparent_bg = false,
+    show_end_of_buffer = false,
+    colors = require("osmium.palette"),
+    overrides = {},
+    integrations = {},
+    theme = 'osmium'
 }
 
 local TRANSPARENTS = {
-   "Normal",
-   "SignColumn",
-   "NvimTreeNormal",
-   "NvimTreeVertSplit",
-   "NeoTreeNormal",
-   "NeoTreeNormalNC"
+    "Normal",
+    "SignColumn",
+    "NvimTreeNormal",
+    "NvimTreeVertSplit",
+    "NeoTreeNormal",
+    "NeoTreeNormalNC"
 }
 
+---@param colors Palette
 local function apply_term_colors(colors)
-   g.terminal_color_0 = colors.black
-   g.terminal_color_1 = colors.red
-   g.terminal_color_2 = colors.green
-   g.terminal_color_3 = colors.yellow
-   g.terminal_color_4 = colors.purple
-   g.terminal_color_5 = colors.pink
-   g.terminal_color_6 = colors.cyan
-   g.terminal_color_7 = colors.white
-   g.terminal_color_8 = colors.selection
-   g.terminal_color_9 = colors.bright_red
-   g.terminal_color_10 = colors.bright_green
-   g.terminal_color_11 = colors.bright_yellow
-   g.terminal_color_12 = colors.bright_blue
-   g.terminal_color_13 = colors.bright_magenta
-   g.terminal_color_14 = colors.bright_cyan
-   g.terminal_color_15 = colors.bright_white
-   g.terminal_color_background = colors.bg
-   g.terminal_color_foreground = colors.fg
+    vim.g.terminal_color_0 = colors.foreground0
+    vim.g.terminal_color_1 = colors.red2
+    vim.g.terminal_color_2 = colors.green2
+    vim.g.terminal_color_3 = colors.yellow2
+    vim.g.terminal_color_4 = colors.purple2
+    vim.g.terminal_color_5 = colors.pink2
+    vim.g.terminal_color_6 = colors.blue2
+    vim.g.terminal_color_7 = colors.foreground2
+    vim.g.terminal_color_8 = colors.foreground0
+    vim.g.terminal_color_9 = colors.red3
+    vim.g.terminal_color_10 = colors.green3
+    vim.g.terminal_color_11 = colors.yellow3
+    vim.g.terminal_color_12 = colors.blue3
+    vim.g.terminal_color_13 = colors.pink3
+    vim.g.terminal_color_14 = colors.blue3
+    vim.g.terminal_color_15 = colors.foreground0
+    vim.g.terminal_color_background = colors.root
+    vim.g.terminal_color_foreground = colors.foreground1
 end
 
 --- override colors with colors
@@ -57,36 +58,43 @@ end
 ---@param overrides HighlightGroups
 ---@return HighlightGroups
 local function override_groups(groups, overrides)
-   for group, setting in pairs(overrides) do
-      groups[group] = setting
-   end
-   return groups
+    for group, setting in pairs(overrides) do
+        groups[group] = setting
+    end
+    return groups
 end
 
----apply osmium colorscheme
 ---@param configs OsmiumConfig
 local function apply(configs)
-   local colors = configs.colors
-   apply_term_colors(colors)
-   local groups = require("osmium.groups").setup(configs)
+    local colors = configs.colors
+    apply_term_colors(
+        colors --[[@as Palette]]
+    )
+    local groups = require("osmium.groups").setup(configs)
 
-   -- apply transparents
-   if configs.transparent_bg then
-      for _, group in ipairs(TRANSPARENTS) do
-         groups[group].bg = nil
-      end
-   end
+    -- apply transparents
+    if configs.transparent_bg then
+        for _, group in ipairs(TRANSPARENTS) do
+            if groups[group] then
+                groups[group].bg = nil
+            else
+                groups[group] = { bg = nil }
+            end
+        end
+    end
 
-   if type(configs.overrides) == "table" then
-      groups = override_groups(groups, configs.overrides --[[@as HighlightGroups]])
-   elseif type(configs.overrides) == "function" then
-      groups = override_groups(groups, configs.overrides(colors))
-   end
+    if type(configs.overrides) == "table" then
+        groups = override_groups(groups, configs.overrides --[[@as HighlightGroups]])
+    elseif type(configs.overrides) == "function" then
+        groups = override_groups(groups, configs.overrides(
+            colors --[[@as Palette]]
+        ))
+    end
 
-   -- set defined highlights
-   for group, setting in pairs(groups) do
-      nvim_set_hl(0, group, setting)
-   end
+    -- set defined highlights
+    for group, setting in pairs(groups) do
+        vim.api.nvim_set_hl(0, group, setting)
+    end
 end
 
 ---@type OsmiumConfig
@@ -95,53 +103,46 @@ local user_configs = {}
 --- get osmium configs
 ---@return OsmiumConfig
 local function get_configs()
-   local configs = DEFAULT_CONFIG
+    local configs = DEFAULT_CONFIG
 
-   if g.colors_name == 'osmium' then
-      configs.theme = 'osmium'
-      configs.colors = require('osmium.palette')
-   end
+    configs = vim.tbl_deep_extend("force", configs, user_configs)
 
-   configs = tbl_deep_extend("force", configs, user_configs)
-
-   return configs
+    return configs
 end
 
 ---setup osmium colorscheme
 ---@param configs OsmiumConfig?
 local function setup(configs)
-   if type(configs) == "table" then
-      user_configs = configs --[[@as OsmiumConfig]]
-   end
+    if type(configs) == "table" then
+        user_configs = configs --[[@as OsmiumConfig]]
+    end
 end
 
----load osmium colorscheme
----@param theme string?
-local function load(theme)
-   if vim.fn.has("nvim-0.7") ~= 1 then
-      vim.notify("osmium.nvim: you must use neovim 0.7 or higher")
-      return
-   end
+local function load()
+    if vim.fn.has("nvim-0.7") ~= 1 then
+        vim.notify("osmium.nvim: neovim >= 0.7 required")
+        return
+    end
 
-   -- reset colors
-   if g.colors_name then
-      cmd("hi clear")
-   end
+    -- reset colors
+    if vim.g.colors_name then
+        vim.cmd("hi clear")
+    end
 
-   if vim.fn.exists("syntax_on") then
-      cmd("syntax reset")
-   end
+    if vim.fn.exists("syntax_on") then
+        vim.cmd("syntax reset")
+    end
 
-   o.background = "dark"
-   o.termguicolors = true
-   g.colors_name = theme or 'osmium'
+    vim.o.background = "dark"
+    vim.o.termguicolors = true
+    vim.g.colors_name = 'osmium'
 
-   apply(get_configs())
+    apply(get_configs())
 end
 
 return {
-   load = load,
-   setup = setup,
-   configs = get_configs,
-   colors = function() return get_configs().colors end,
+    load = load,
+    setup = setup,
+    configs = get_configs,
+    colors = function() return get_configs().colors end,
 }

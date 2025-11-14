@@ -1,51 +1,77 @@
 ---@class Palette
----@field bg string
----@field fg string
----@field selection string
----@field comment string
----@field red string
----@field orange string
----@field yellow string
----@field green string
----@field purple string
----@field cyan string
----@field pink string
----@field bright_red string
----@field bright_green string
----@field bright_yellow string
----@field bright_blue string
----@field bright_magenta string
----@field bright_cyan string
----@field bright_white string
----@field menu string
----@field visual string
----@field gutter_fg string
----@field nontext string
----@field white string
----@field black string
+---@field root string
+---@field surface0 string
+---@field surface1 string
+---@field surface2 string
+---@field surface3 string
+---@field surface4 string
+---@field foreground0 string
+---@field foreground1 string
+---@field foreground2 string
+---@field blue0 string
+---@field blue1 string
+---@field blue2 string
+---@field blue3 string
+---@field purple0 string
+---@field purple1 string
+---@field purple2 string
+---@field purple3 string
+---@field pink0 string
+---@field pink1 string
+---@field pink2 string
+---@field pink3 string
+---@field orange0 string
+---@field orange1 string
+---@field orange2 string
+---@field orange3 string
+---@field green0 string
+---@field green1 string
+---@field green2 string
+---@field green3 string
+---@field red0 string
+---@field red1 string
+---@field red2 string
+---@field red3 string
+---@field yellow0 string
+---@field yellow1 string
+---@field yellow2 string
+---@field yellow3 string
 return {
-   bg = "#000000",
-   fg = "#F8F8F2",
-   selection = "#44475A",
-   comment = "#6272A4",
-   red = "#FF5555",
-   orange = "#FFB86C",
-   yellow = "#F1FA8C",
-   green = "#50fa7b",
-   purple = "#BD93F9",
-   cyan = "#8BE9FD",
-   pink = "#FF79C6",
-   bright_red = "#FF6E6E",
-   bright_green = "#69FF94",
-   bright_yellow = "#FFFFA5",
-   bright_blue = "#D6ACFF",
-   bright_magenta = "#FF92DF",
-   bright_cyan = "#A4FFFF",
-   bright_white = "#FFFFFF",
-   menu = "#21222C",
-   visual = "#3E4452",
-   gutter_fg = "#4B5263",
-   nontext = "#3B4048",
-   white = "#ABB2BF",
-   black = "#191A21",
+    root = "#14131E",
+    surface0 = "#1F1D2D",
+    surface1 = "#242336",
+    surface2 = "#353553",
+    surface3 = "#494764",
+    surface4 = "#555275",
+    foreground0 = "#C8D5F1",
+    foreground1 = "#949BB9",
+    foreground2 = "#747A9C",
+    blue0 = "#313B47",
+    blue1 = "#526475",
+    blue2 = "#6E899F",
+    blue3 = "#9ECFE0",
+    purple0 = "#332B46",
+    purple1 = "#544874",
+    purple2 = "#72619E",
+    purple3 = "#A587DD",
+    pink0 = "#3B2A47",
+    pink1 = "#634675",
+    pink2 = "#865E9F",
+    pink3 = "#CA81E0",
+    orange0 = "#40322F",
+    orange1 = "#6B544B",
+    orange2 = "#927262",
+    orange3 = "#DFA671",
+    green0 = "#3B3E30",
+    green1 = "#62694D",
+    green2 = "#869066",
+    green3 = "#C9DC79",
+    red0 = "#3C1A29",
+    red1 = "#652941",
+    red2 = "#893555",
+    red3 = "#CF385A",
+    yellow0 = "#423A2E",
+    yellow1 = "#6F6149",
+    yellow2 = "#978460",
+    yellow3 = "#E9C76E",
 }
