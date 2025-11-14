@@ -12,30 +12,44 @@
 ---@field blue1 string
 ---@field blue2 string
 ---@field blue3 string
+---@field blue4 string
+---@field blue5 string
 ---@field purple0 string
 ---@field purple1 string
 ---@field purple2 string
 ---@field purple3 string
+---@field purple4 string
+---@field purple5 string
 ---@field pink0 string
 ---@field pink1 string
 ---@field pink2 string
 ---@field pink3 string
+---@field pink4 string
+---@field pink5 string
 ---@field orange0 string
 ---@field orange1 string
 ---@field orange2 string
 ---@field orange3 string
+---@field orange4 string
+---@field orange5 string
 ---@field green0 string
 ---@field green1 string
 ---@field green2 string
 ---@field green3 string
+---@field green4 string
+---@field green5 string
 ---@field red0 string
 ---@field red1 string
 ---@field red2 string
 ---@field red3 string
+---@field red4 string
+---@field red5 string
 ---@field yellow0 string
 ---@field yellow1 string
 ---@field yellow2 string
 ---@field yellow3 string
+---@field yellow4 string
+---@field yellow5 string
 return {
     root = "#14131E",
     surface0 = "#1F1D2D",
@@ -47,31 +61,45 @@ return {
     foreground1 = "#949BB9",
     foreground2 = "#747A9C",
     blue0 = "#313B47",
-    blue1 = "#526475",
-    blue2 = "#6E899F",
-    blue3 = "#9ECFE0",
+    blue1 = "#414D5D",
+    blue2 = "#526475",
+    blue3 = "#6E899F",
+    blue4 = "#8BB0C3",
+    blue5 = "#9ECFE0",
     purple0 = "#332B46",
-    purple1 = "#544874",
-    purple2 = "#72619E",
-    purple3 = "#A587DD",
+    purple1 = "#43395C",
+    purple2 = "#544874",
+    purple3 = "#72619E",
+    purple4 = "#9078C1",
+    purple5 = "#A587DD",
     pink0 = "#3B2A47",
-    pink1 = "#634675",
-    pink2 = "#865E9F",
-    pink3 = "#CA81E0",
+    pink1 = "#4D375D",
+    pink2 = "#634675",
+    pink3 = "#865E9F",
+    pink4 = "#AD74C3",
+    pink5 = "#CA81E0",
     orange0 = "#40322F",
-    orange1 = "#6B544B",
-    orange2 = "#927262",
-    orange3 = "#DFA671",
+    orange1 = "#53423E",
+    orange2 = "#6B544B",
+    orange3 = "#927262",
+    orange4 = "#BD906D",
+    orange5 = "#DFA671",
     green0 = "#3B3E30",
-    green1 = "#62694D",
-    green2 = "#869066",
-    green3 = "#C9DC79",
+    green1 = "#4D5040",
+    green2 = "#62694D",
+    green3 = "#869066",
+    green4 = "#ACBA73",
+    green5 = "#C9DC79",
     red0 = "#3C1A29",
-    red1 = "#652941",
-    red2 = "#893555",
-    red3 = "#CF385A",
+    red1 = "#4E2337",
+    red2 = "#652941",
+    red3 = "#893555",
+    red4 = "#B13B5B",
+    red5 = "#CF385A",
     yellow0 = "#423A2E",
-    yellow1 = "#6F6149",
-    yellow2 = "#978460",
-    yellow3 = "#E9C76E",
+    yellow1 = "#564B3D",
+    yellow2 = "#6F6149",
+    yellow3 = "#978460",
+    yellow4 = "#C4A96A",
+    yellow5 = "#E9C76E",
 }

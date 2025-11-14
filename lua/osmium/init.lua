@@ -2,7 +2,6 @@
 ---@field blink_cmp? boolean
 ---@field gitsigns? boolean
 ---@field telescope? boolean
----@field supermaven? boolean
 
 ---@class OsmiumConfig
 ---@field italic_comment? boolean

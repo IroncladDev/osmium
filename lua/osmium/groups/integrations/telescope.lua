@@ -15,7 +15,6 @@ local function highlight_telescope(highlights, colors)
         TelescopeResultsDiffDelete = { fg = colors.red2 },
         TelescopeResultsDiffChange = { fg = colors.blue2 },
         TelescopeResultsDiffAdd = { fg = colors.green2 },
-        Comment = {fg = colors.yellow3}
     })
 end
 

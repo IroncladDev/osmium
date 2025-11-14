@@ -17,10 +17,6 @@ local function highlight_integrations(highlights, configs)
         combined = require("osmium.groups.integrations.telescope")(combined, configs.colors)
     end
 
-    if configs.integrations.supermaven then
-        combined = require("osmium.groups.integrations.supermaven")(combined, configs.colors)
-    end
-
     return combined
 end
 
