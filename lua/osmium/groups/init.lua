@@ -10,7 +10,7 @@ local function setup(configs)
     local colors = configs.colors --[[@as Palette]]
     assert(colors ~= nil, "Must pass colors")
 
-    local KEYWORD = colors.green4
+    local KEYWORD = colors.green5
     local STRING = colors.green4
     local STRING_ESCAPE = colors.purple4
     local COMMENT = colors.foreground2
@@ -26,99 +26,113 @@ local function setup(configs)
     }
 
     local highlights = {
+        CurSearch = { fg = colors.root, bg = colors.orange4 },
+        Cursor = { reverse = true, },
+        CursorColumn = { bg = colors.surface1, },
+        CursorLine = { bg = colors.surface1, },
+        DiffAdd = { bg = colors.green0, },
+        DiffChange = { bg = colors.yellow0 },
+        DiffDelete = { bg = colors.red0, fg = colors.red0 },
+        DiffText = { fg = colors.yellow5, bg = colors.yellow1 },
+        DiffTextAdd = { fg = colors.green5, bg = colors.green1 },
+        EndOfBuffer = endOfBuffer,
+
+        OkMsg = { fg = colors.green4, },
+        WarningMsg = { fg = colors.yellow4, },
+        ErrorMsg = { fg = colors.red4, },
+        StderrMsg = { fg = colors.red4, },
+        StdoutMsg = { fg = colors.foreground0, },
+
+        WinSeparator = { fg = colors.root, },
+        Folded = { fg = colors.blue5, bg = colors.blue0 },
+        IncSearch = { fg = colors.orange5, bg = colors.orange0, },
+        Substitute = { fg = colors.orange5, bg = colors.orange0, },
+
+        LineNr = { fg = colors.foreground2, bg = colors.surface1 },
+        CursorLineNr = { fg = colors.foreground1, bg = colors.surface2, bold = true, },
+
+        MatchParen = { underline = true, sp = colors.blue3 },
+        ModeMsg = { fg = colors.foreground1 },
+        MsgArea = { bg = colors.root },
+        MoreMsg = { fg = colors.foreground1 },
+
         Normal = { fg = colors.foreground0, bg = colors.surface0, },
-        NormalFloat = { fg = colors.foreground0, bg = colors.surface1, },
+        NormalFloat = { fg = colors.foreground0, },
+
+        FloatBorder = { fg = colors.foreground2, },
+        FloatShadow = { bg = colors.root },
+
+        Pmenu = { fg = colors.foreground1, bg = colors.surface2, },
+        PmenuSel = { fg = colors.foreground0, bg = colors.surface3, },
+        PmenuSbar = { bg = colors.surface1, },
+        PmenuThumb = { bg = colors.green4 },
+        PmenuExtra = { bg = colors.surface2 },
+        PmenuKindSel = { bg = colors.surface2, },
+        PmenuBorder = { fg = colors.foreground2, },
+        PmenuShadow = { bg = colors.root, },
+
+        StatusLine = { fg = colors.green4, bg = colors.green0, },
+        StatusLineNC = { fg = colors.foreground1, bg = colors.surface1, },
+        StatusLineTerm = { fg = colors.blue4, bg = colors.blue0, },
+        StatusLineTermNC = { fg = colors.foreground1, bg = colors.surface1, },
+
+        TabLine = { fg = colors.foreground2, bg = colors.surface1 },
+        TabLineSel = { fg = colors.foreground1, bg = colors.surface2 },
+        TabLineFill = { bg = colors.root, },
+
+        Visual = { bg = colors.surface2, },
+
+        Search = { fg = colors.orange5, bg = colors.orange0, },
+
+        Question = { fg = colors.blue4, },
+        SpecialKey = { fg = colors.foreground2, },
+
+        SpellBad = { undercurl = true, sp = colors.yellow4 },
 
         -- LSP stuff
         Comment = { fg = COMMENT, italic = configs.italic_comment, },
+
         Constant = { fg = colors.foreground0, },
         String = { fg = STRING, },
-        Character = { fg = colors.green2, },
+        Character = { fg = STRING, },
         Number = { fg = LITERAL, },
         Boolean = { fg = LITERAL, },
-        Float = { fg = colors.orange2, },
-        FloatBorder = { fg = colors.foreground0, },
-        Operator = { fg = colors.foreground2, },
-        Keyword = { fg = KEYWORD, },
-        Keywords = { fg = KEYWORD, },
+        Float = { fg = LITERAL, },
+
         Identifier = { fg = colors.foreground1, },
-        Function = { fg = colors.yellow2, },
+        Function = { fg = colors.foreground1, },
+
         Statement = { fg = KEYWORD, },
-        Conditional = { fg = colors.pink2, },
+        Conditional = { fg = colors.green4, },
         Repeat = { fg = colors.pink2, },
         Label = { fg = colors.blue2, },
+        Operator = { fg = colors.foreground2, },
+        Keyword = { fg = KEYWORD, },
         Exception = { fg = colors.purple2, },
+
         PreProc = { fg = colors.yellow2, },
         Include = { fg = KEYWORD, },
         Define = { fg = KEYWORD, },
         Title = { fg = colors.blue2, },
         Macro = { fg = colors.purple2, },
         PreCondit = { fg = colors.blue2, },
-        Type = { fg = colors.blue2, },
+
+        Type = { fg = TYPE, },
         StorageClass = { fg = colors.pink2, },
         Structure = { fg = colors.yellow2, },
         TypeDef = { fg = colors.yellow2, },
+
         Special = { fg = colors.green2, italic = true },
+        SpecialChar = { fg = colors.green2, italic = true },
         SpecialComment = { fg = COMMENT, italic = true, },
+
+        Underlined = { fg = colors.blue2, underline = true, },
         Error = { fg = colors.red3, },
         Todo = { fg = COMMENT, bold = true, italic = true, },
-        Underlined = { fg = colors.blue2, underline = true, },
 
-        Cursor = { reverse = true, },
-        CursorLineNr = { fg = colors.foreground1, bold = true, },
-
-        SignColumn = { bg = colors.root, },
-
-        Conceal = { fg = colors.foreground2, },
-        CursorColumn = { bg = colors.foreground2, },
-        CursorLine = { bg = colors.surface0, },
-        ColorColumn = { bg = colors.surface0, },
-
-        StatusLine = { fg = colors.foreground0, bg = colors.surface0, },
-        StatusLineNC = { fg = colors.foreground2, },
-        StatusLineTerm = { fg = colors.foreground0, bg = colors.surface0, },
-        StatusLineTermNC = { fg = colors.foreground2, },
-
-        Directory = { fg = colors.blue2, },
-        DiffAdd = { fg = colors.root, bg = colors.green2, },
-        DiffChange = { fg = colors.orange2, },
-        DiffDelete = { fg = colors.red0, },
-        DiffText = { fg = colors.foreground2, },
-
-        ErrorMsg = { fg = colors.red3, },
-        VertSplit = { fg = colors.foreground2, },
-        WinSeparator = { fg = colors.foreground2, },
-        Folded = { fg = colors.foreground2, },
-        FoldColumn = {},
-        Search = { fg = colors.foreground2, bg = colors.orange2, },
-        IncSearch = { fg = colors.orange2, bg = colors.foreground2, },
-        LineNr = { fg = colors.foreground2, },
-        MatchParen = { fg = colors.foreground1, underline = true, },
-        NonText = { fg = colors.foreground2, },
-        Pmenu = { fg = colors.foreground2, bg = colors.surface1, },
-        PmenuSel = { fg = colors.foreground2, bg = colors.surface0, },
-        PmenuSbar = { bg = colors.root, },
-        PmenuThumb = { bg = colors.surface0, },
-
-        Question = { fg = colors.purple2, },
-        QuickFixLine = { fg = colors.foreground2, bg = colors.yellow2, },
-        SpecialKey = { fg = colors.foreground2, },
-
-        SpellBad = { fg = colors.red3, underline = true, },
-        SpellCap = { fg = colors.yellow2, },
-        SpellLocal = { fg = colors.yellow2, },
-        SpellRare = { fg = colors.yellow2, },
-
-        TabLine = { fg = colors.foreground2, },
-        TabLineSel = { fg = colors.foreground2, },
-        TabLineFill = { bg = colors.root, },
-        Terminal = { fg = colors.foreground2, bg = colors.foreground2, },
-        Visual = { bg = colors.green0, },
-        VisualNOS = { fg = colors.green0, },
-        WarningMsg = { fg = colors.yellow2, },
-        WildMenu = { fg = colors.foreground2, bg = colors.foreground2, },
-
-        EndOfBuffer = endOfBuffer,
+        Added = { fg = colors.green4, bg = colors.green1 },
+        Changed = { fg = colors.yellow4, bg = colors.yellow1 },
+        Removed = { fg = colors.red4, bg = colors.red1 },
 
         -- TreeSitter
         ['@error'] = { fg = colors.red3, },
@@ -151,7 +165,7 @@ local function setup(configs)
         ['@function.method'] = { fg = METHOD, },
         ['@variable.member'] = { fg = VARIABLE, },
         ['@property'] = { fg = PROPERTY, },
-        ['@constructor'] = { fg = SYMBOL, },
+        ['@constructor'] = { fg = METHOD, },
 
         ['@keyword.conditional'] = { fg = KEYWORD, },
         ['@keyword.repeat'] = { fg = KEYWORD, },
@@ -170,7 +184,7 @@ local function setup(configs)
         ['@keyword.include'] = { fg = KEYWORD, },
 
         ['@variable'] = { fg = VARIABLE, },
-        ['@variable.builtin'] = { fg = VARIABLE, },
+        ['@variable.builtin'] = { fg = LITERAL, },
 
         ['@markup'] = { fg = colors.orange2, },
         ['@markup.strong'] = { fg = colors.orange2, bold = true, },     -- bold
@@ -273,58 +287,42 @@ local function setup(configs)
         debugPc = { bg = colors.surface1, },
         debugBreakpoint = { fg = colors.red2, reverse = true, },
 
-        -- LSP
-        DiagnosticError = { fg = colors.red2, },
-        DiagnosticWarn = { fg = colors.yellow2, },
-        DiagnosticInfo = { fg = colors.blue2, },
-        DiagnosticHint = { fg = colors.blue2, },
-        DiagnosticUnderlineError = { undercurl = true, sp = colors.red2, },
-        DiagnosticUnderlineWarn = { undercurl = true, sp = colors.yellow2, },
-        DiagnosticUnderlineInfo = { undercurl = true, sp = colors.blue2, },
-        DiagnosticUnderlineHint = { undercurl = true, sp = colors.blue2, },
-        DiagnosticSignError = { fg = colors.red2, },
-        DiagnosticSignWarn = { fg = colors.yellow2, },
-        DiagnosticSignInfo = { fg = colors.blue2, },
-        DiagnosticSignHint = { fg = colors.blue2, },
-        DiagnosticFloatingError = { fg = colors.red2, },
-        DiagnosticFloatingWarn = { fg = colors.yellow2, },
-        DiagnosticFloatingInfo = { fg = colors.blue2, },
-        DiagnosticFloatingHint = { fg = colors.blue2, },
-        DiagnosticVirtualTextError = { fg = colors.red2, },
-        DiagnosticVirtualTextWarn = { fg = colors.yellow2, },
-        DiagnosticVirtualTextInfo = { fg = colors.blue2, },
-        DiagnosticVirtualTextHint = { fg = colors.blue2, },
+        -- Diagnostics
+        DiagnosticError = { fg = colors.red5, bg = colors.red1 },
+        DiagnosticWarn = { fg = colors.yellow5, bg = colors.yellow1 },
+        DiagnosticInfo = { fg = colors.blue5, bg = colors.blue1 },
+        DiagnosticHint = { fg = colors.blue5, bg = colors.blue1 },
+        DiagnosticUnderlineError = { undercurl = true, sp = colors.red4, },
+        DiagnosticUnderlineWarn = { undercurl = true, sp = colors.yellow4, },
+        DiagnosticUnderlineInfo = { undercurl = true, sp = colors.blue4, },
+        DiagnosticUnderlineHint = { undercurl = true, sp = colors.blue4, },
+        DiagnosticSignError = { fg = colors.red5, bg = colors.red1 },
+        DiagnosticSignWarn = { fg = colors.yellow5, bg = colors.yellow1 },
+        DiagnosticSignInfo = { fg = colors.blue5, bg = colors.blue1 },
+        DiagnosticSignHint = { fg = colors.blue5, bg = colors.blue1 },
+        DiagnosticFloatingError = { fg = colors.red5, bg = colors.red1 },
+        DiagnosticFloatingWarn = { fg = colors.yellow5, bg = colors.yellow1 },
+        DiagnosticFloatingInfo = { fg = colors.blue5, bg = colors.blue1 },
+        DiagnosticFloatingHint = { fg = colors.blue5, bg = colors.blue1 },
+        DiagnosticVirtualTextError = { fg = colors.red5, bg = colors.red1 },
+        DiagnosticVirtualTextWarn = { fg = colors.yellow5, bg = colors.yellow1 },
+        DiagnosticVirtualTextInfo = { fg = colors.blue5, bg = colors.blue1 },
+        DiagnosticVirtualTextHint = { fg = colors.blue5, bg = colors.blue1 },
 
-        LspDiagnosticsDefaultError = { fg = colors.red2, },
-        LspDiagnosticsDefaultWarning = { fg = colors.yellow2, },
-        LspDiagnosticsDefaultInformation = { fg = colors.blue2, },
-        LspDiagnosticsDefaultHint = { fg = colors.blue2, },
-        LspDiagnosticsUnderlineError = { fg = colors.red2, undercurl = true, },
-        LspDiagnosticsUnderlineWarning = { fg = colors.yellow2, undercurl = true, },
-        LspDiagnosticsUnderlineInformation = { fg = colors.blue2, undercurl = true, },
-        LspDiagnosticsUnderlineHint = { fg = colors.blue2, undercurl = true, },
+        LspDiagnosticsDefaultError = { fg = colors.red5, bg = colors.red1 },
+        LspDiagnosticsDefaultWarning = { fg = colors.yellow5, bg = colors.yellow1 },
+        LspDiagnosticsDefaultInformation = { fg = colors.blue5, bg = colors.blue1 },
+        LspDiagnosticsDefaultHint = { fg = colors.blue5, bg = colors.blue1 },
+        LspDiagnosticsUnderlineError = { fg = colors.red5, bg = colors.red0, undercurl = true, },
+        LspDiagnosticsUnderlineWarning = { fg = colors.yellow5, bg = colors.yellow0, undercurl = true, },
+        LspDiagnosticsUnderlineInformation = { fg = colors.blue5, bg = colors.blue0, undercurl = true, },
+        LspDiagnosticsUnderlineHint = { fg = colors.blue5, bg = colors.blue0, undercurl = true, },
+
         LspReferenceText = { fg = colors.orange2, },
         LspReferenceRead = { fg = colors.orange2, },
         LspReferenceWrite = { fg = colors.orange2, },
         LspCodeLens = { fg = colors.blue2, },
-        LspInlayHint = { fg = "#969696", bg = "#2f3146" },
-
-        --LSP Saga
-        LspFloatWinNormal = { fg = colors.foreground1, },
-        LspFloatWinBorder = { fg = colors.foreground2, },
-        LspSagaHoverBorder = { fg = colors.foreground2, },
-        LspSagaSignatureHelpBorder = { fg = colors.foreground2, },
-        LspSagaCodeActionBorder = { fg = colors.foreground2, },
-        LspSagaDefPreviewBorder = { fg = colors.foreground2, },
-        LspLinesDiagBorder = { fg = colors.foreground2, },
-        LspSagaRenameBorder = { fg = colors.foreground2, },
-        LspSagaBorderTitle = { fg = colors.surface1, },
-        LSPSagaDiagnosticTruncateLine = { fg = colors.foreground2, },
-        LspSagaDiagnosticBorder = { fg = colors.foreground2, },
-        LspSagaShTruncateLine = { fg = colors.foreground2, },
-        LspSagaDocTruncateLine = { fg = colors.foreground2, },
-        LspSagaLspFinderBorder = { fg = colors.foreground2, },
-        CodeActionNumber = { bg = 'NONE', fg = colors.blue2 },
+        LspInlayHint = { fg = colors.foreground2, },
 
         -- IndentBlankLine
         IndentBlanklineContextChar = { fg = colors.red3, nocombine = true, },
