@@ -1,5 +1,4 @@
 ---@class Integrations
----@field blink_cmp? boolean
 ---@field gitsigns? boolean
 ---@field telescope? boolean
 
@@ -21,32 +20,23 @@ local DEFAULT_CONFIG = {
     theme = 'osmium'
 }
 
-local TRANSPARENTS = {
-    "Normal",
-    "SignColumn",
-    "NvimTreeNormal",
-    "NvimTreeVertSplit",
-    "NeoTreeNormal",
-    "NeoTreeNormalNC"
-}
-
 ---@param colors Palette
 local function apply_term_colors(colors)
     vim.g.terminal_color_0 = colors.foreground2
-    vim.g.terminal_color_1 = colors.red4
-    vim.g.terminal_color_2 = colors.green4
-    vim.g.terminal_color_3 = colors.yellow4
-    vim.g.terminal_color_4 = colors.purple4
-    vim.g.terminal_color_5 = colors.pink4
-    vim.g.terminal_color_6 = colors.blue4
+    vim.g.terminal_color_1 = colors.redFgDim
+    vim.g.terminal_color_2 = colors.greenFgDim
+    vim.g.terminal_color_3 = colors.yellowFgDim
+    vim.g.terminal_color_4 = colors.purpleFgDim
+    vim.g.terminal_color_5 = colors.pinkFgDim
+    vim.g.terminal_color_6 = colors.blueFgDim
     vim.g.terminal_color_7 = colors.foreground1
     vim.g.terminal_color_8 = colors.foreground2
-    vim.g.terminal_color_9 = colors.red5
-    vim.g.terminal_color_10 = colors.green5
-    vim.g.terminal_color_11 = colors.yellow5
-    vim.g.terminal_color_12 = colors.blue5
-    vim.g.terminal_color_13 = colors.pink5
-    vim.g.terminal_color_14 = colors.blue5
+    vim.g.terminal_color_9 = colors.redFg
+    vim.g.terminal_color_10 = colors.greenFg
+    vim.g.terminal_color_11 = colors.yellowFg
+    vim.g.terminal_color_12 = colors.blueFg
+    vim.g.terminal_color_13 = colors.pinkFg
+    vim.g.terminal_color_14 = colors.blueFg
     vim.g.terminal_color_15 = colors.foreground0
     vim.g.terminal_color_background = colors.root
     vim.g.terminal_color_foreground = colors.foreground1
@@ -70,17 +60,6 @@ local function apply(configs)
         colors --[[@as Palette]]
     )
     local groups = require("osmium.groups").setup(configs)
-
-    -- apply transparents
-    if configs.transparent_bg then
-        for _, group in ipairs(TRANSPARENTS) do
-            if groups[group] then
-                groups[group].bg = nil
-            else
-                groups[group] = { bg = nil }
-            end
-        end
-    end
 
     if type(configs.overrides) == "table" then
         groups = override_groups(groups, configs.overrides --[[@as HighlightGroups]])

@@ -5,51 +5,38 @@
 ---@field surface2 string
 ---@field surface3 string
 ---@field surface4 string
----@field foreground0 string
----@field foreground1 string
 ---@field foreground2 string
----@field blue0 string
----@field blue1 string
----@field blue2 string
----@field blue3 string
----@field blue4 string
----@field blue5 string
----@field purple0 string
----@field purple1 string
----@field purple2 string
----@field purple3 string
----@field purple4 string
----@field purple5 string
----@field pink0 string
----@field pink1 string
----@field pink2 string
----@field pink3 string
----@field pink4 string
----@field pink5 string
----@field orange0 string
----@field orange1 string
----@field orange2 string
----@field orange3 string
----@field orange4 string
----@field orange5 string
----@field green0 string
----@field green1 string
----@field green2 string
----@field green3 string
----@field green4 string
----@field green5 string
----@field red0 string
----@field red1 string
----@field red2 string
----@field red3 string
----@field red4 string
----@field red5 string
----@field yellow0 string
----@field yellow1 string
----@field yellow2 string
----@field yellow3 string
----@field yellow4 string
----@field yellow5 string
+---@field foreground1 string
+---@field foreground0 string
+---@field blueBg string
+---@field blueBgBright string
+---@field blueFgDim string
+---@field blueFg string
+---@field purpleBg string
+---@field purpleBgBright string
+---@field purpleFgDim string
+---@field purpleFg string
+---@field pinkBg string
+---@field pinkBgBright string
+---@field pinkFgDim string
+---@field pinkFg string
+---@field orangeBg string
+---@field orangeBgBright string
+---@field orangeFgDim string
+---@field orangeFg string
+---@field greenBg string
+---@field greenBgBright string
+---@field greenFgDim string
+---@field greenFg string
+---@field redBg string
+---@field redBgBright string
+---@field redFgDim string
+---@field redFg string
+---@field yellowBg string
+---@field yellowBgBright string
+---@field yellowFgDim string
+---@field yellowFg string
+---@field transparent string
 return {
     root = "#14131E",
     surface0 = "#1F1D2D",
@@ -57,51 +44,45 @@ return {
     surface2 = "#353553",
     surface3 = "#494764",
     surface4 = "#555275",
+
     foreground0 = "#C8D5F1",
     foreground1 = "#949BB9",
     foreground2 = "#747A9C",
 
-    blue0 = "#303849",
-    blue1 = "#40495F",
-    blue2 = "#566682",
-    blue3 = "#7188AC",
-    blue4 = "#8CAAD1",
-    blue5 = "#9ABFE8",
+    blueBg = "#303849",
+    blueBgBright = "#40495F",
+    blueFgDim = "#8CAAD1",
+    blueFg = "#9ABFE8",
 
-    purple0 = "#2D2A49",
-    purple1 = "#3C375E",
-    purple2 = "#504A81",
-    purple3 = "#6861AB",
-    purple4 = "#8075CF",
-    purple5 = "#8C80E6",
-    pink0 = "#3E3149",
-    pink1 = "#51405F",
-    pink2 = "#725982",
-    pink3 = "#9775AC",
-    pink4 = "#C091D0",
-    pink5 = "#D9A1E8",
-    orange0 = "#423531",
-    orange1 = "#564541",
-    orange2 = "#7A6052",
-    orange3 = "#A27F69",
-    orange4 = "#CF9876",
-    orange5 = "#EBB17B",
-    green0 = "#3B3F37",
-    green1 = "#4D5148",
-    green2 = "#6B745E",
-    green3 = "#8E9A7A",
-    green4 = "#B3C48D",
-    green5 = "#C9DE96",
-    red0 = "#402030",
-    red1 = "#552B3F",
-    red2 = "#783650",
-    red3 = "#9F4666",
-    red4 = "#CA5072",
-    red5 = "#E55376",
-    yellow0 = "#423C38",
-    yellow1 = "#564E4A",
-    yellow2 = "#796F61",
-    yellow3 = "#A1947E",
-    yellow4 = "#CDBB91",
-    yellow5 = "#E9D39C",
+    purpleBg = "#35334A",
+    purpleBgBright = "#464260",
+    purpleFgDim = "#9D97D3",
+    purpleFg = "#B0A8EB",
+
+    pinkBg = "#3E3149",
+    pinkBgBright = "#51405F",
+    pinkFgDim = "#C091D0",
+    pinkFg = "#D9A1E8",
+
+    orangeBg = "#423531",
+    orangeBgBright = "#564541",
+    orangeFgDim = "#CF9876",
+    orangeFg = "#EBB17B",
+
+    greenBg = "#3B3F37",
+    greenBgBright = "#4D5148",
+    greenFgDim = "#B3C48D",
+    greenFg = "#C9DE96",
+
+    redBg = "#402030",
+    redBgBright = "#552B3F",
+    redFgDim = "#CA5072",
+    redFg = "#E55376",
+
+    yellowBg = "#423C38",
+    yellowBgBright = "#564E4A",
+    yellowFgDim = "#CDBB91",
+    yellowFg = "#E9D39C",
+
+    transparent = "NONE",
 }

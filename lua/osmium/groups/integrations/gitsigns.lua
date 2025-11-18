@@ -4,14 +4,13 @@ local combine = require("osmium.groups.utils").combine
 ---@param colors Palette
 local function highlight_gitsigns(highlights, colors)
     return combine(highlights, {
-        GitSignsAdd = { fg = colors.green3, },
-        GitSignsChange = { fg = colors.blue2, },
-        GitSignsDelete = { fg = colors.red3, },
-        GitSignsAddLn = { fg = colors.foreground2, bg = colors.green3, },
-        GitSignsChangeLn = { fg = colors.foreground2, bg = colors.blue2, },
-        GitSignsDeleteLn = { fg = colors.foreground2, bg = colors.red3, },
+        GitSignsAdd = { fg = colors.greenFg, },
+        GitSignsChange = { fg = colors.yellowFg, },
+        GitSignsDelete = { fg = colors.redFg },
+        GitSignsAddLn = { fg = colors.foreground2, bg = colors.greenBg, },
+        GitSignsChangeLn = { fg = colors.foreground2, bg = colors.yellowBg, },
+        GitSignsDeleteLn = { fg = colors.foreground2, bg = colors.redFg, },
         GitSignsCurrentLineBlame = { fg = colors.foreground2, },
-        BlinkCmpKindTypeParameter = { link = "@variable.parameter" },
     })
 end
 

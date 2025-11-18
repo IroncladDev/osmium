@@ -10,57 +10,61 @@ local function setup(configs)
     local colors = configs.colors --[[@as Palette]]
     assert(colors ~= nil, "Must pass colors")
 
-    local KEYWORD = colors.green5
-    local STRING = colors.blue5
-    local SPECIAL = colors.orange5
+    local KEYWORD = colors.greenFg
+    local STRING = colors.purpleFg
+    local SPECIAL = colors.pinkFg
     local COMMENT = colors.foreground2
-    local LITERAL = colors.green4
-    local VARIABLE = colors.foreground1
-    local METHOD = colors.foreground0
-    local FUNCTION = colors.foreground0
-    local PROPERTY = colors.orange4
-    local SYMBOL = colors.purple3
-    local TYPE = colors.yellow5
-
-    local endOfBuffer = {
-        fg = configs.show_end_of_buffer and colors.surface0 or colors.root,
-    }
+    local LITERAL = colors.purpleFg
+    local VARIABLE = colors.foreground0
+    local METHOD = colors.greenFgDim
+    local FUNCTION = colors.blueFgDim
+    local PROPERTY = colors.blueFgDim
+    local SYMBOL = colors.foreground2
+    local TYPE = colors.yellowFg
+    local MACRO = colors.pinkFg
 
     local highlights = {
-        CurSearch = { fg = colors.root, bg = colors.orange4 },
+        CurSearch = { fg = colors.root, bg = colors.orangeFgDim },
         Cursor = { reverse = true, },
         CursorColumn = { bg = colors.surface1, },
         CursorLine = { bg = colors.surface1, },
-        Directory = { fg = colors.blue4, },
-        DiffAdd = { bg = colors.green0, },
-        DiffChange = { bg = colors.yellow0 },
-        DiffDelete = { bg = colors.red0, fg = colors.red0 },
-        DiffText = { fg = colors.yellow5, bg = colors.yellow1 },
-        DiffTextAdd = { fg = colors.green5, bg = colors.green1 },
-        EndOfBuffer = endOfBuffer,
+        Directory = { fg = colors.blueFgDim, },
+        DiffAdd = { fg = colors.greenFg, bg = colors.greenBg },
+        DiffChange = { fg = colors.yellowFg, bg = colors.yellowBg },
+        DiffDelete = { fg = colors.redFg, bg = colors.redBg },
+        DiffText = { fg = colors.yellowFg, bg = colors.yellowBg },
+        DiffTextAdd = { fg = colors.greenFg, bg = colors.greenBg },
+        EndOfBuffer = {
+            fg = configs.show_end_of_buffer and colors.blueBgBright or colors.surface0,
+        },
 
-        OkMsg = { fg = colors.green4, },
-        WarningMsg = { fg = colors.yellow4, },
-        ErrorMsg = { fg = colors.red4, },
-        StderrMsg = { fg = colors.red4, },
+        OkMsg = { fg = colors.greenFgDim, },
+        WarningMsg = { fg = colors.yellowFgDim, },
+        ErrorMsg = { fg = colors.redFgDim, },
+        StderrMsg = { fg = colors.redFgDim, },
         StdoutMsg = { fg = colors.foreground0, },
 
         WinSeparator = { fg = colors.root, },
-        Folded = { fg = colors.blue5, bg = colors.blue0 },
-        SignColumn = { bg = colors.surface1 },
+        Folded = { fg = colors.blueFg, bg = colors.blueBg },
+        SignColumn = {
+            bg = configs.transparent_bg and colors.transparent or colors.surface0,
+        },
         FoldColumn = { bg = colors.surface1 },
-        IncSearch = { fg = colors.orange5, bg = colors.orange0, },
-        Substitute = { fg = colors.orange5, bg = colors.orange0, },
+        IncSearch = { fg = colors.orangeFg, bg = colors.orangeBg, },
+        Substitute = { fg = colors.orangeFg, bg = colors.orangeBg, },
 
         LineNr = { fg = colors.foreground2, bg = colors.surface1 },
         CursorLineNr = { fg = colors.foreground1, bg = colors.surface2, bold = true, },
 
-        MatchParen = { underline = true, sp = colors.blue3 },
+        MatchParen = { underline = true },
         ModeMsg = { fg = colors.foreground1 },
         MsgArea = { bg = colors.root },
         MoreMsg = { fg = colors.foreground1 },
 
-        Normal = { fg = colors.foreground0, bg = colors.surface0, },
+        Normal = {
+            fg = colors.foreground0,
+            bg = configs.transparent_bg and "NONE" or colors.surface0,
+        },
         NormalFloat = { fg = colors.foreground0, bg = colors.surface2 },
 
         FloatBorder = { fg = colors.surface4, bg = colors.surface1 },
@@ -69,15 +73,15 @@ local function setup(configs)
         Pmenu = { fg = colors.foreground1, bg = colors.surface2, },
         PmenuSel = { fg = colors.foreground0, bg = colors.surface3, },
         PmenuSbar = { bg = colors.surface1, },
-        PmenuThumb = { bg = colors.green4 },
+        PmenuThumb = { bg = colors.greenFgDim },
         PmenuExtra = { bg = colors.surface2 },
         PmenuKindSel = { bg = colors.surface2, },
         PmenuBorder = { fg = colors.foreground2, },
         PmenuShadow = { bg = colors.root, },
 
-        StatusLine = { fg = colors.green4, bg = colors.green0, },
+        StatusLine = { fg = colors.greenFgDim, bg = colors.greenBg, },
         StatusLineNC = { fg = colors.foreground1, bg = colors.surface1, },
-        StatusLineTerm = { fg = colors.blue4, bg = colors.blue0, },
+        StatusLineTerm = { fg = colors.greenFgDim, bg = colors.greenBg, },
         StatusLineTermNC = { fg = colors.foreground1, bg = colors.surface1, },
 
         TabLine = { fg = colors.foreground2, bg = colors.surface1 },
@@ -86,25 +90,25 @@ local function setup(configs)
 
         Visual = { bg = colors.surface2, },
 
-        Search = { fg = colors.orange5, bg = colors.orange0, },
+        Search = { fg = colors.orangeFg, bg = colors.orangeBg, },
 
-        Question = { fg = colors.blue4, },
+        Question = { fg = colors.blueFgDim, },
         SpecialKey = { fg = colors.foreground2, },
 
-        SpellBad = { undercurl = true, sp = colors.yellow4 },
+        SpellBad = { undercurl = true, sp = colors.yellowFgDim },
 
         -- Diagnostics
-        DiagnosticError = { fg = colors.red5, bg = colors.red1 },
-        DiagnosticWarn = { fg = colors.yellow5, bg = colors.yellow1 },
-        DiagnosticInfo = { fg = colors.blue5, bg = colors.blue1 },
-        DiagnosticHint = { fg = colors.blue5, bg = colors.blue1 },
-        DiagnosticUnderlineError = { undercurl = true, sp = colors.red4, },
-        DiagnosticUnderlineWarn = { undercurl = true, sp = colors.yellow4, },
-        DiagnosticUnderlineInfo = { undercurl = true, sp = colors.blue4, },
-        DiagnosticUnderlineHint = { undercurl = true, sp = colors.blue4, },
+        DiagnosticError = { fg = colors.redFg, bg = colors.redBgBright },
+        DiagnosticWarn = { fg = colors.yellowFg, bg = colors.yellowBgBright },
+        DiagnosticInfo = { fg = colors.purpleFg, bg = colors.purpleBgBright },
+        DiagnosticHint = { fg = colors.blueFg, bg = colors.blueBgBright },
+        DiagnosticUnderlineError = { undercurl = true, sp = colors.redFgDim, },
+        DiagnosticUnderlineWarn = { undercurl = true, sp = colors.yellowFgDim, },
+        DiagnosticUnderlineInfo = { undercurl = true, sp = colors.blueFgDim, },
+        DiagnosticUnderlineHint = { undercurl = true, sp = colors.blueFgDim, },
 
         -- Inlay Hints
-        LspInlayHint = { fg = colors.blue2, },
+        LspInlayHint = { fg = colors.foreground2, italic = true, },
 
         -- LSP stuff
         Comment = { fg = COMMENT, italic = configs.italic_comment, },
@@ -142,27 +146,27 @@ local function setup(configs)
         SpecialChar = { fg = SPECIAL, italic = true },
         Tag = { fg = colors.foreground1, },
         Delimiter = { fg = SYMBOL, },
-        SpecialComment = { fg = colors.purple5, italic = true, },
+        SpecialComment = { fg = colors.purpleFg, italic = true, },
 
-        Underlined = { fg = colors.blue5, underline = true, },
-        Error = { fg = colors.red5, },
-        Todo = { fg = colors.orange5, bold = true, italic = true, },
+        Underlined = { fg = colors.blueFg, underline = true, },
+        Error = { fg = colors.redFg, },
+        Todo = { fg = colors.orangeFg, bold = true, italic = true, },
 
-        Added = { fg = colors.green5, bg = colors.green1 },
-        Changed = { fg = colors.yellow5, bg = colors.yellow1 },
-        Removed = { fg = colors.red5, bg = colors.red1 },
+        Added = { fg = colors.greenFg, bg = colors.greenBg },
+        Changed = { fg = colors.yellowFg, bg = colors.yellowBg },
+        Removed = { fg = colors.redFg, bg = colors.redBg },
 
         -- TreeSitter
-        ['@error'] = { fg = colors.red3, },
+        ['@error'] = { fg = colors.redFgDim, },
         ['@punctuation.delimiter'] = { fg = SYMBOL, },
         ['@punctuation.bracket'] = { fg = SYMBOL, },
-        ['@markup.list'] = { fg = colors.blue2, },
+        ['@markup.list'] = { fg = colors.blueFgDim, },
 
         ['@constant'] = { fg = TYPE, },
-        ['@constant.builtin'] = { fg = LITERAL, },
+        ['@constant.builtin'] = { fg = TYPE, },
         ['@markup.link.label.symbol'] = { fg = SYMBOL, },
 
-        ['@constant.macro'] = { fg = LITERAL, },
+        ['@constant.macro'] = { fg = MACRO, },
         ['@string.regexp'] = { fg = STRING, },
         ['@string'] = { fg = STRING, },
         ['@string.escape'] = { fg = SPECIAL, },
@@ -177,7 +181,7 @@ local function setup(configs)
 
         ['@function.builtin'] = { fg = FUNCTION, },
         ['@function'] = { fg = FUNCTION, },
-        ['@function.macro'] = { fg = FUNCTION, },
+        ['@function.macro'] = { fg = MACRO, },
         ['@variable.parameter'] = { fg = VARIABLE, },
         ['@variable.parameter.reference'] = { fg = VARIABLE, },
         ['@function.method'] = { fg = METHOD, },
@@ -202,16 +206,19 @@ local function setup(configs)
         ['@keyword.include'] = { fg = KEYWORD, },
 
         ['@variable'] = { fg = VARIABLE, },
-        ['@variable.builtin'] = { fg = LITERAL, },
+        ['@variable.builtin'] = { fg = VARIABLE, },
 
         ['@markup'] = { fg = colors.foreground2, },
-        ['@markup.strong'] = { fg = colors.orange4, bold = true, },     -- bold
-        ['@markup.emphasis'] = { fg = colors.yellow4, italic = true, }, -- italic
-        ['@markup.underline'] = { fg = colors.orange4, },
-        ['@markup.heading'] = { fg = colors.red5, bold = true, },      -- title
-        ['@markup.raw'] = { fg = colors.green4, },                     -- inline code
-        ['@markup.link.url'] = { fg = colors.blue5, italic = true, }, -- urls
-        ['@markup.link'] = { fg = colors.blue4, bold = true, },
+        ['@markup.strong'] = { fg = colors.blueFgDim, bold = true, },
+        ['@markup.emphasis'] = { fg = colors.yellowFgDim, italic = true, },
+        ['@markup.underline'] = { fg = colors.orangeFgDim, },
+        ['@markup.heading'] = { fg = colors.greenFg, bold = true, },
+        ['@markup.raw'] = { fg = colors.orangeFg },
+        ['@markup.link.url'] = { fg = colors.blueFg, italic = true, underline = true },
+        ['@markup.link'] = { fg = colors.blueFg, bold = true },
+        ['@markup.strikethrough'] = { fg = colors.foreground1, strikethrough = true, },
+        ['@punctuation.special.markdown'] = { fg = colors.foreground1, italic = false, },
+        ['@label.markdown'] = { fg = colors.orangeFg, },
 
         ['@tag'] = { fg = colors.foreground1, },
         ['@tag.attribute'] = { fg = PROPERTY, },
@@ -228,16 +235,16 @@ local function setup(configs)
         ['@modifier'] = { fg = KEYWORD },
         ['@regexp'] = { fg = STRING },
         ['@typeParameter'] = { fg = TYPE },
-        ['@decorator'] = { fg = colors.yellow5 },
+        ['@decorator'] = { fg = MACRO },
 
         -- LSP Semantic (0.9+)
         ['@lsp.type.class'] = { fg = TYPE, },
         ['@lsp.type.enum'] = { fg = TYPE, },
-        ['@lsp.type.decorator'] = { fg = colors.pink5 },
+        ['@lsp.type.decorator'] = { fg = MACRO, },
         ['@lsp.type.enumMember'] = { fg = PROPERTY, },
         ['@lsp.type.function'] = { fg = FUNCTION, },
         ['@lsp.type.interface'] = { fg = TYPE },
-        ['@lsp.type.macro'] = { fg = colors.pink5 },
+        ['@lsp.type.macro'] = { fg = MACRO, },
         ['@lsp.type.method'] = { fg = METHOD, },
         ['@lsp.type.namespace'] = { fg = TYPE, },
         ['@lsp.type.parameter'] = { fg = VARIABLE, },
@@ -248,6 +255,13 @@ local function setup(configs)
 
         -- Language-specific
         ['@keyword.conditional.ternary.typescript'] = { fg = SYMBOL, },
+        ['@markup.heading.html'] = { fg = colors.foreground0 },
+        ['@markup.heading.1.html'] = { fg = colors.foreground0 },
+        ['@markup.heading.2.html'] = { fg = colors.foreground0 },
+        ['@markup.heading.3.html'] = { fg = colors.foreground0 },
+        ['@markup.heading.4.html'] = { fg = colors.foreground0 },
+        ['@markup.heading.5.html'] = { fg = colors.foreground0 },
+        ['@markup.heading.6.html'] = { fg = colors.foreground0 },
     }
 
     return highlight_integrations(highlights, configs)
