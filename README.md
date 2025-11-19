@@ -16,6 +16,7 @@ Using lazy.nvim
             integrations = {
                 gitsigns = true,
                 telescope = true,
+                -- [...other integrations]
             },
             transparent_bg = false,
             show_end_of_buffer = false,
@@ -37,6 +38,7 @@ require("osmium").setup({
         -- set to true to enable
         gitsigns = false,
         telescope = false,
+        indent_blankline = false,
     },
     transparent_bg = false, -- whether to use a transparent background
     show_end_of_buffer = false, -- whether to show the end of buffer
@@ -47,6 +49,7 @@ require("osmium").setup({
 
 - [gitsigns](https://github.com/lewis6991/gitsigns.nvim)
 - [telescope](https://github.com/nvim-telescope/telescope.nvim)
+- [indent_blankline](https://github.com/lukas-reineke/indent-blankline.nvim)
 
 ## Contributing
 

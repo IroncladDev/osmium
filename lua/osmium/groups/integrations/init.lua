@@ -12,6 +12,9 @@ local function highlight_integrations(highlights, configs)
     if configs.integrations.telescope then
         combined = require("osmium.groups.integrations.telescope")(combined, configs.colors)
     end
+    if configs.integrations.indent_blankline then
+        combined = require("osmium.groups.integrations.indent_blankline")(combined, configs.colors)
+    end
 
     return combined
 end

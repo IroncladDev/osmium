@@ -2,7 +2,7 @@ local combine = require("osmium.groups.utils").combine
 
 ---@param highlights HighlightGroups
 ---@param colors Palette
-local function highlight_gitsigns(highlights, colors)
+return function(highlights, colors)
     return combine(highlights, {
         GitSignsAdd = { fg = colors.greenFg, },
         GitSignsChange = { fg = colors.yellowFg, },
@@ -13,5 +13,3 @@ local function highlight_gitsigns(highlights, colors)
         GitSignsCurrentLineBlame = { fg = colors.foreground2, },
     })
 end
-
-return highlight_gitsigns
