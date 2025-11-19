@@ -2,7 +2,7 @@ local combine = require("osmium.groups.utils").combine
 
 ---@param highlights HighlightGroups
 ---@param colors Palette
-local function highlight_telescope(highlights, colors)
+return function(highlights, colors)
     return combine(highlights, {
         TelescopePromptBorder = { fg = colors.foreground2, },
         TelescopeResultsBorder = { fg = colors.foreground2, },
@@ -15,5 +15,3 @@ local function highlight_telescope(highlights, colors)
         TelescopeResultsDiffAdd = { fg = colors.greenFg, bg = colors.greenBg },
     })
 end
-
-return highlight_telescope

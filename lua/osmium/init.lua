@@ -1,6 +1,7 @@
 ---@class Integrations
 ---@field gitsigns? boolean
 ---@field telescope? boolean
+---@field indent_blankline? boolean
 
 ---@class OsmiumConfig
 ---@field italic_comment? boolean
