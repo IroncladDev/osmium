@@ -27,6 +27,20 @@ Using lazy.nvim
 }
 ```
 
+Using vim.pack (requires neovim-nightly 0.12+)
+
+```lua
+vim.pack.add({
+  { src = "https://github.com/IroncladDev/osmium" },
+})
+
+require("osmium").setup({
+  -- the configuration options
+})
+
+vim.cmd.colorscheme("osmium")
+```
+
 I have not tried installing this with something like packer. AFAIK you have to call the setup function with the desired options
 
 ## Configuration
