@@ -53,6 +53,7 @@ require("osmium").setup({
         gitsigns = false,
         telescope = false,
         indent_blankline = false,
+        oil = false,
     },
     transparent_bg = false, -- whether to use a transparent background
     show_end_of_buffer = false, -- whether to show the end of buffer
@@ -64,6 +65,7 @@ require("osmium").setup({
 - [gitsigns](https://github.com/lewis6991/gitsigns.nvim)
 - [telescope](https://github.com/nvim-telescope/telescope.nvim)
 - [indent_blankline](https://github.com/lukas-reineke/indent-blankline.nvim)
+- [oil.nvim](https://github.com/stevearc/oil.nvim)
 
 ## Contributing
 
