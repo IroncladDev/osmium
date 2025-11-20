@@ -27,7 +27,7 @@ Using lazy.nvim
 }
 ```
 
-Using vim.pack (requires neovim-nighlty 0.12+)
+Using vim.pack (requires neovim-nightly 0.12+)
 
 ```lua
 vim.pack.add({
