@@ -2,6 +2,7 @@
 ---@field gitsigns? boolean
 ---@field telescope? boolean
 ---@field indent_blankline? boolean
+---@field fff? boolean
 ---@field oil? boolean
 
 ---@class OsmiumConfig

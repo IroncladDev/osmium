@@ -54,6 +54,7 @@ require("osmium").setup({
         telescope = false,
         indent_blankline = false,
         oil = false,
+        fff = false
     },
     transparent_bg = false, -- whether to use a transparent background
     show_end_of_buffer = false, -- whether to show the end of buffer
@@ -66,6 +67,7 @@ require("osmium").setup({
 - [telescope](https://github.com/nvim-telescope/telescope.nvim)
 - [indent_blankline](https://github.com/lukas-reineke/indent-blankline.nvim)
 - [oil.nvim](https://github.com/stevearc/oil.nvim)
+- [fff](https://github.com/dmtrKovalenko/fff.nvim)
 
 ## Contributing
 
