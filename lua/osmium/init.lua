@@ -3,6 +3,8 @@
 ---@field telescope? boolean
 ---@field indent_blankline? boolean
 ---@field fff? boolean
+---@field oil? boolean
+---@field mini_icons? boolean
 
 ---@class OsmiumConfig
 ---@field italic_comment? boolean
